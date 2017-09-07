@@ -28,4 +28,16 @@ public class PlatformActivity extends AppCompatActivity {
         setContentView(platformView);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        platformView.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        platformView.resume();
+    }
+
 }
