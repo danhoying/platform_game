@@ -35,6 +35,9 @@ public class PlatformView extends SurfaceView implements Runnable {
         // Initialize drawing objects
         ourHolder = getHolder();
         paint = new Paint();
+
+        // Initialize the viewport
+        vp = new Viewport(screenWidth, screenHeight);
     }
 
     @Override
