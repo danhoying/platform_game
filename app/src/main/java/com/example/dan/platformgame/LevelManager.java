@@ -43,4 +43,44 @@ public class LevelManager {
     public boolean isPlaying() {
         return playing;
     }
+
+    // Each index corresponds to a bitmap
+    public Bitmap getBitmap(char blockType) {
+        int index;
+        switch (blockType) {
+            case '.':
+                index = 0;
+                break;
+            case '1':
+                index = 1;
+                break;
+            case 'p':
+                index = 2;
+                break;
+            default:
+                index = 0;
+                break;
+        }
+        return bitmapsArray[index];
+    }
+
+    // Gets the correct index to corresponding bitmap in the bitmap array
+    public int getBitmapIndex(char blockType) {
+        int index;
+        switch (blockType) {
+            case '.':
+                index = 0;
+                break;
+            case '1':
+                index = 1;
+                break;
+            case 'p':
+                index = 2;
+                break;
+            default:
+                index = 0;
+                break;
+        }
+        return index;
+    }
 }
