@@ -83,4 +83,37 @@ public class LevelManager {
         }
         return index;
     }
+
+    private void loadMapData(Context context, int pixelsPerMetre, float px, float py) {
+        char c;
+        int currentIndex = -1;
+
+        // Width and height of map for Viewport
+        mapHeight = levelData.tiles.size();
+        mapWidth = levelData.tiles.get(0).length();
+
+        for (int i = 0; i < levelData.tiles.size(); i++) {
+            for (int j = 0; j < levelData.tiles.get(i).length(); j++) {
+                c = levelData.tiles.get(i).charAt(j);
+
+                // Prevent loading of empty spaces
+                if (c != '.') {
+                    currentIndex++;
+                    switch(c) {
+                        case '1':
+                            // Add grass
+                            gameObjects.add(new Grass(j, i, c));
+                            break;
+                        case 'p':
+                            // Add player
+                            gameObjects.add(new Player(context, px, py, pixelsPerMetre));
+                            playerIndex = currentIndex;
+                            player = (Player) gameObjects.get(playerIndex);
+                            break;
+                    }
+
+                }
+            }
+        }
+    }
 }
